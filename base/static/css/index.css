@@ -1,0 +1,32 @@
+.carousel, .carousel-item img{
+    max-width: 1110px;
+}
+
+.watch figure img{
+    width: 100%;
+    max-width: 350px;
+}
+
+.watch figure{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.movie-cart{
+    text-align: center;
+}
+
+.movie-cart a span{
+    font-size: 20px;
+}
+
+.movie-cart a{
+    width: 100%;
+    max-width: 350px;
+    margin-left: 0px;
+}
+
+.slide-news{
+    background-color: #6c757d;
+    height: 500px;
+}
