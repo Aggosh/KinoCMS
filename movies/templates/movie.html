@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block javascript %}
+{% endblock %}
+{% block css %}
+    <link href="{% static 'css/movie.css' %}" rel="stylesheet">
+{% endblock %}
+{% block film_corrent %}
+    active
+{% endblock %}
+{% block title %}{{ movie.title }}{% endblock %}
+{% block content %}
+    <iframe width="100%" height="600px"src="https://www.youtube.com/embed/{{  movie.youtube }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <hr class="grey lighten-5">
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">{{ movie.title }}</span>
+    </h2>
+    <section class="clearfix">
+        <div class="container">
+            <div class="row">
+                <table class="table table-sm table-borderless text-light col-lg-5">
+                    <tbody>
+                        <tr>
+                            <td>Дата примьеры</td>
+                            <td>{{ movie.premiere_date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Страна</td>
+                            <td>
+                                {% for country in movie.countrys.all %}
+                                    <a href="/country/{{ country.slug }}" class="text-light">
+                                        {% if forloop.last %}{{ country }}
+                                        {% else %}{{ country }},
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Сценарист</td>
+                            <td>
+                                {% for screenwriter in movie.screenwriters.all %}
+                                    <a href="/screenwriter/{{ screenwriter.slug }}" class="text-light">
+                                        {% if forloop.last %}{{ screenwriter }}
+                                        {% else %}{{ screenwriter }},
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Продюсер</td>
+                            <td>
+                                {% for producer in movie.producers.all %}
+                                    <a href="/producer/{{ producer.slug }}" class="text-light">
+                                        {% if forloop.last %}{{ producer }}
+                                        {% else %}{{ producer }},
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Жанр</td>
+                            <td>
+                                {% for genre in movie.genres.all %}
+                                    <a href="/genre/{{ genre.slug }}" class="text-light">
+                                        {% if forloop.last %}{{ genre }}
+                                        {% else %}{{ genre }},
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Компазитор</td>
+                            <td>
+                                {% for composer in movie.composers.all %}
+                                    <a href="/composer/{{ composer.slug }}" class="text-light">
+                                        {% if forloop.last %}{{ composer }}
+                                        {% else %}{{ composer }},
+                                        {% endif %}
+                                    </a>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Продолжительность</td>
+                            <td>
+                                {{ movie.time }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Возрастное ограничение</td>
+                            <td>
+                                {{ movie.age }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col-lg-5 offset-lg-2">
+                    <p class="text-light description-text">
+                        {{ movie.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="grey lighten-5">
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Доступние сеансы</span>
+    </h2>
+    <section class="clearfix">
+        <div class="container">
+            <div class="row">
+                <table class="table table-sm table-borderless text-light text-center">
+                    <tbody>
+                        {% for time_table in time_tables %}
+                            <tr>
+                                <td><p>{{ time_table.date }}</p></td>
+                                <td><p>{{ time_table.time }}</p></td>
+                                <td><p>{{ time_table.price }} грн</p></td>
+                                <td>
+                                    <a href="#" class="btn btn-danger">Купить билет</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <hr class="grey lighten-5">
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Кадры из фильма</span>
+    </h2>
+    <div id="carouselMovieFrameIndicators" class="carousel mx-auto w-75 slide z-depth-4" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for iter in movie.photos.all %}
+                <li data-target="#carouselMovieFrameIndicators" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for frame in movie.photos.all %}
+                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                <img class="d-block w-100" src="/media/{{ frame.photo }}" alt="{{ frame.title }}">
+            </div>
+        {% endfor %}
+    </div>
+    <a class="carousel-control-prev" href="#carouselMovieFrameIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselMovieFrameIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<hr class="grey lighten-5">
+{% endblock %}

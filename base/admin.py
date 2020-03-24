@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import BigPoster
 
-# Register your models here.
+
+@admin.register(BigPoster)
+class MyAdmin(admin.ModelAdmin):
+    pass

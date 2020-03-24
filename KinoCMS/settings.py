@@ -39,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'movies',
-    'poster',
     'news',
-    'movie_cart'
+    'timetable',
 ]
 
 MIDDLEWARE = [

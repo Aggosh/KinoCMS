@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Kino CMS</title>
+    <title>Kino CMS {% block title %}{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -40,148 +40,153 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="/">Главная
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="#">Афиша</a>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="#">Фильмы</a>
-            </li>
-            <li class="nav-item px-lg-4 dropdown">
-              <a class="nav-link text-uppercase text-expanded dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                О кинотеатре
-              </a>
-              <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Новости</a>
-              </div>
-            </li>
-            <li class="nav-item px-lg-4">
-              <form class="form-inline ml-auto">
-                <div class="md-form my-0">
-                  <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
-                </div>
-                <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit">Найти</button>
-              </form>
-            </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="#">Логин</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    {% block content %}
-      
-    {% endblock %}
-  </body>
-  <!-- Footer -->
-  <footer class="page-footer font-small mdb-color elegant-color-dark pt-4">
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
-      <!-- Footer links -->
-      <div class="row text-center text-md-left mt-3 pb-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Наше приложение</h6>
-            <a href="#">
-              <i class="fab fa-google-play fa-2x"> Google Play</i>
+            <li class="nav-item {% block home_corrent %}{% endblock %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="/">Главная
             </a>
-            <a>
-              <i class="fab fa-apple fa-2x"> App Store</i>
-            </a>
-        </div>
-        <!-- Grid column -->
-        <hr class="w-100 clearfix d-md-none">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">Афиша</h6>
-          <p>
-            <a href="#!">Расписание</a>
-          </p>
-          <p>
-            <a href="#!">Скоро в прокате</a>
-          </p>
-          <p>
-            <a href="#!">Кинотеатры</a>
-          </p>
-          <p>
-            <a href="#!">Акции</a>
-          </p>
-        </div>
-        <!-- Grid column -->
-        <hr class="w-100 clearfix d-md-none">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-          <h6 class="text-uppercase mb-4 font-weight-bold">О кинотеатре</h6>
-          <p>
-            <a href="#!">Новости</a>
-          </p>
-          <p>
-            <a href="#!">Реклама</a>
-          </p>
-          <p>
-            <a href="#!">Кафе-бар</a>
-          </p>
-          <p>
-            <a href="#!">Контакты</a>
-          </p>
-        </div>
-        <!-- Grid column -->
+          </li>
+          <li class="nav-item {% block poster_corrent %}{% endblock %} px-lg-4">
+          <a class="nav-link text-uppercase text-expanded" href="#">Афиша
+          </a>
+        </li>
+        <li class="nav-item {% block film_corrent %}{% endblock %} px-lg-4">
+        <a class="nav-link text-uppercase text-expanded" href="/movie">Фильмы
+        </a>
+      </li>
+      <li class="nav-item px-lg-4 {% block about_corrent %}{% endblock %} dropdown">
+      <a class="nav-link text-uppercase text-expanded dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        О кинотеатре
+      </a>
+      <div class="dropdown-menu dropdown-dark" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Новости</a>
       </div>
-      </div>
+    </li>
+    <li class="nav-item px-lg-4">
+      <form class="form-inline ml-auto">
+        <div class="md-form my-0">
+          <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
+        </div>
+        <button href="#!" class="btn btn-outline-white btn-md my-0 ml-sm-2" type="submit">Найти</button>
+      </form>
+    </li>
+    <li class="nav-item {% block login_corrent %}{% endblock %} px-lg-4">
+    <a class="nav-link text-uppercase text-expanded" href="#">Логин
+    </a>
+  </li>
+</ul>
+</div>
+</div>
+</nav>
+{% block content %}
 
-      <!-- Footer links -->
-      <hr class="grey lighten-5">
-      <div class="container text-center text-md-left">
-      <!-- Grid row -->
-      <div class="row d-flex align-items-center">
-        <!-- Grid column -->
-        <div class="col-md-7 col-lg-8">
-          <!--Copyright-->
-          <p class="text-center text-md-left">© 2020 Copyright:
-            <a href="https://github.com/Aggosh">
-              <strong> Aggosh</strong>
-            </a>
-          </p>
-        </div>
-        <!-- Grid column -->
-        <!-- Grid column -->
-        <div class="col-md-5 col-lg-4 ml-lg-0">
-          <!-- Social buttons -->
-          <div class="text-center text-md-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-google-plus-g"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- Grid column -->
-      </div>
-      <!-- Grid row -->
-    </div>
-    <!-- Footer Links -->
-  </footer>
-  <!-- Footer -->
+{% endblock %}
+</body>
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color elegant-color-dark pt-4">
+<!-- Footer Links -->
+<div class="container text-center text-md-left">
+<!-- Footer links -->
+<div class="row text-center text-md-left mt-3 pb-3">
+<!-- Grid column -->
+<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+<h6 class="text-uppercase mb-4 font-weight-bold">Наше приложение</h6>
+<a href="#">
+  <i class="fab fa-google-play fa-2x"> Google Play</i>
+</a>
+<a>
+  <i class="fab fa-apple fa-2x"> App Store</i>
+</a>
+</div>
+<!-- Grid column -->
+<hr class="w-100 clearfix d-md-none">
+<!-- Grid column -->
+<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+<p>
+  <a href="#!">Афиша</a>
+</p>
+<p>
+  <a href="#!">Расписание</a>
+</p>
+<p>
+  <a href="#!">Скоро в прокате</a>
+</p>
+<p>
+  <a href="#!">Кинотеатры</a>
+</p>
+<p>
+  <a href="#!">Акции</a>
+</p>
+</div>
+<!-- Grid column -->
+<hr class="w-100 clearfix d-md-none">
+<!-- Grid column -->
+<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+<p>
+  <a href="#!">О кинотеатре</a>
+</p>
+<p>
+  <a href="#!">Новости</a>
+</p>
+<p>
+  <a href="#!">Реклама</a>
+</p>
+<p>
+  <a href="#!">Кафе-бар</a>
+</p>
+<p>
+  <a href="#!">Контакты</a>
+</p>
+</div>
+<!-- Grid column -->
+</div>
+</div>
+<!-- Footer links -->
+<hr class="grey lighten-5">
+<div class="container text-center text-md-left">
+<!-- Grid row -->
+<div class="row d-flex align-items-center">
+<!-- Grid column -->
+<div class="col-md-7 col-lg-8">
+<!--Copyright-->
+<p class="text-center text-md-left">© 2020 Copyright:
+  <a href="https://github.com/Aggosh">
+    <strong> Aggosh</strong>
+  </a>
+</p>
+</div>
+<!-- Grid column -->
+<!-- Grid column -->
+<div class="col-md-5 col-lg-4 ml-lg-0">
+<!-- Social buttons -->
+<div class="text-center text-md-right">
+  <ul class="list-unstyled list-inline">
+    <li class="list-inline-item">
+      <a class="btn-floating btn-sm rgba-white-slight mx-1">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-sm rgba-white-slight mx-1">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-sm rgba-white-slight mx-1">
+        <i class="fab fa-google-plus-g"></i>
+      </a>
+    </li>
+    <li class="list-inline-item">
+      <a class="btn-floating btn-sm rgba-white-slight mx-1">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+</div>
+<!-- Grid column -->
+</div>
+<!-- Grid row -->
+</div>
+<!-- Footer Links -->
+</footer>
+<!-- Footer -->
 </html>

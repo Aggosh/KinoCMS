@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block javascript %}
+{% endblock %}
+{% block css %}
+    <link href="{% static 'css/movies.css' %}" rel="stylesheet">
+{% endblock %}
+{% block film_corrent %}
+    active
+{% endblock %}
+{% block title %}Фильмы{% endblock %}
+{% block content %}
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Доступние сеансы</span>
+    </h2>
+    <section class="clearfix">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </section>
+    <hr class="grey lighten-5">
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Скоро выйдут</span>
+    </h2>
+    <section class="clearfix">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </section>
+    <hr class="grey lighten-5">
+    <h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Больше нет в прокате</span>
+    </h2>
+    <section class="clearfix">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </section>
+{% endblock %}
