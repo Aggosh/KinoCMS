@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from movies.models import Movie
 from timetable.models import TimeTable
+from news.models import New
 from .models import BigPoster
 import datetime
 import locale
@@ -23,5 +24,6 @@ def index(request):
     context = {"today_movies": today_movies,
                "after_movies": Movie.objects.filter(premiere_date__gt=today),
                "today_date": today.strftime("%B %d").encode('windows-1251').decode('utf-8'),
-               "big_posters": BigPoster.objects.all()}
+               "big_posters": BigPoster.objects.all(),
+               "news": New.objects.all()}
     return render(request, 'index.html', context=context)

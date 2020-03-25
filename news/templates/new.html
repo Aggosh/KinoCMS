@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'css/new.css' %}" rel="stylesheet">
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="{% static 'js/new.js' %}"></script>
+{% endblock %}
+{% block about_corrent %}
+active
+{% endblock %}
+{% block title %}{{ new.title }}{% endblock %}
+{% block content %}
+<section class="clearfix my-3">
+    <div class="container">
+        <div class="row">
+            <!-- Card Dark -->
+            <div class="card col-lg-12 px-0">
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="/media/{{ new.photo }}" alt="{{ new.title }}">
+                    <div class="mask rgba-white-slight"></div>
+                </div>
+                <!-- Card content -->
+                <div class="card-body elegant-color white-text rounded-bottom">
+                    <!-- Title -->
+                    <h4 class="card-title text-center">{{ new.title }}</h4>
+                    <!-- Text -->
+                    <p class="card-text white-text mb-4">
+                        {{ new.description}}
+                        <br>
+                        <br>
+                        {{ new.date }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr class="grey lighten-5">
+{% endblock %}

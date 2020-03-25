@@ -3,43 +3,72 @@
 {% block javascript %}
 {% endblock %}
 {% block css %}
-    <link href="{% static 'css/movies.css' %}" rel="stylesheet">
+<link href="{% static 'css/movies.css' %}" rel="stylesheet">
 {% endblock %}
 {% block film_corrent %}
-    active
+active
 {% endblock %}
 {% block title %}Фильмы{% endblock %}
 {% block content %}
-    <h2 class="text-center">
-    <span class="site-heading-upper text-light mb-3">Доступние сеансы</span>
-    </h2>
-    <section class="clearfix">
-        <div class="container">
-            <div class="row">
-                
+<h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Сейчас в прокате</span>
+</h2>
+<section class="clearfix">
+    <div class="container">
+        <div class="row">
+            {% for movie in rental_movies %}
+            <!-- Card Dark -->
+            <div class="card col-lg-3 px-0">
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="/media/{{ movie.poster }}" alt="{{ movie.title }}">
+                    <a href="/movie/{{ movie.slug }}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!-- Card content -->
+                <div class="card-body elegant-color white-text rounded-bottom">
+                    <!-- Title -->
+                    <h4 class="card-title text-center">{{ movie.title }}</h4>
+                    <!-- Link -->
+                    <div class="text-center">
+                        <a href="#" class="btn btn-danger">Купить билет</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<hr class="grey lighten-5">
+<h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Скоро в прокате</span>
+</h2>
+<section class="clearfix">
+    <div class="container">
+        <div class="row">
+            {% for movie in soon_rental_movies %}
+        </div><!-- Card Dark -->
+        <div class="card col-lg-3 px-0">
+            <!-- Card image -->
+            <div class="view overlay">
+                <img class="card-img-top" src="/media/{{ movie.poster }}" alt="{{ movie.title }}">
+                <a href="/movie/{{ movie.slug }}">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <!-- Card content -->
+            <div class="card-body elegant-color white-text rounded-bottom">
+                <!-- Title -->
+                <h4 class="card-title text-center">{{ movie.title }}</h4>
+                <!-- Link -->
+                <div class="text-center">
+                    <p>С {{ movie.premiere_date }}</p>
+                </div>
             </div>
         </div>
-    </section>
-    <hr class="grey lighten-5">
-    <h2 class="text-center">
-    <span class="site-heading-upper text-light mb-3">Скоро выйдут</span>
-    </h2>
-    <section class="clearfix">
-        <div class="container">
-            <div class="row">
-                
-            </div>
-        </div>
-    </section>
-    <hr class="grey lighten-5">
-    <h2 class="text-center">
-    <span class="site-heading-upper text-light mb-3">Больше нет в прокате</span>
-    </h2>
-    <section class="clearfix">
-        <div class="container">
-            <div class="row">
-                
-            </div>
-        </div>
-    </section>
+        {% endfor %}
+    </div>
+    </div>
+</section>
 {% endblock %}

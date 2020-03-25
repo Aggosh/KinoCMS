@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block javascript %}
+{% endblock %}
+{% block css %}
+<link href="{% static 'css/movies.css' %}" rel="stylesheet">
+{% endblock %}
+{% block about_corrent %}
+active
+{% endblock %}
+{% block title %}Новости{% endblock %}
+{% block content %}
+<h2 class="text-center">
+    <span class="site-heading-upper text-light mb-3">Новости</span>
+</h2>
+<section class="clearfix">
+    <div class="container">
+            <div class="offset-lg-1 row">
+            {% for new in news %}
+            <!-- Card Dark -->
+            <div class="card mb-4 col-lg-5 px-0" >
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="/media/{{ new.photo }}" alt="{{ new.title }}">
+                    <a href="/new/{{ new.slug }}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <!-- Card content -->
+                <div class="card-body elegant-color white-text">
+                    <!-- Title -->
+                    <h4 class="card-title">{{ new.title }}</h4>
+                    <!-- Text -->
+                    <p class="card-text">{{ new.description|slice:":100" }}...</p>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <a href="/new/{{ new.slug }}" class="btn btn-primary btn-md">Читать дальше</a>
+                </div>
+                <!-- Card content -->
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
