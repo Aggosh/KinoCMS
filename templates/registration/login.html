@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block login_corrent %}
+active
+{% endblock %}
+{% block title %}Войти{% endblock %}
+{% block content %}
+<section class="clearfix">
+    <div class="container">
+        <!-- Default form login -->
+        <form class="text-center border border-light p-5 elegant-color text-light col-lg-6 offset-lg-3 z-depth-4 my-5" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <p class="h4 mb-4">Войти</p>
+            {% if form.errors %}
+            <p class="text-danger">Имя пользователя или пароль неверны.</p>
+            {% endif %}
+            {% if next %}
+            {% if user.is_authenticated %}
+            <p class="text-danger">Ваша учетная запись не имеет доступа к этой странице. Продолжать, пожалуйста, войдите в систему с учетной записью, которая имеет доступ.</p>
+            {% else %}
+            <p class="text-danger">Зайдите что бы увидеть данную страницу</p>
+            {% endif %}
+            {% endif %}
+            <!-- Login -->
+            <table class="table table-sm table-borderless text-light col-lg-6 offset-lg-2 text-center">
+              <tr>
+                <td>
+                  {{ form.username.label_tag }}
+                </td>
+                <td>
+                  {{ form.username }}
+                </td>
+              </tr>
+              <!-- Password -->
+              <tr>
+                <td>
+                  {{ form.password.label_tag }}
+                </td>
+                <td>
+                  {{ form.password }}
+                </td>
+              </tr>
+            </table>
+            <div class="d-flex justify-content-around">
+                <div>
+                    <!-- Remember me -->
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                        <label class="custom-control-label" for="defaultLoginFormRemember">Запомнить</label>
+                    </div>
+                </div>
+                <div>
+                    <!-- Forgot password -->
+                    <a href="">Забыли пароль ?</a>
+                </div>
+            </div>
+            <!-- Sign in button -->
+            <input class="btn btn-info btn-block my-4" value="Войти" type="submit"></button>
+            <!-- Register -->
+            <p>Не зарегистрированы ?
+                <a href="/accounts/register/">Регистрация</a>
+            </p>
+        </form>
+        <!-- Default form login -->
+    </div>
+</section>
+{% endblock %}
